@@ -22,6 +22,10 @@ export class ContactoService {
   contactoURL:string = `https://nuclear-forms.firebaseio.com/${this.auth.userProfile.nickname}.json`;
   mensajeURL:string = `https://nuclear-forms.firebaseio.com/${this.auth.userProfile.nickname}/`;
 
+  // usuario:any[] = this.auth.userProfile.name.split("@");
+  // contactoURL:string = `https://nuclear-forms.firebaseio.com/${this.usuario[0]}.json`;
+  // mensajeURL:string = `https://nuclear-forms.firebaseio.com/${this.usuario[0]}/`;
+
   // nuevoMensaje(mensaje:Mensaje){
   //     let body = JSON.stringify(mensaje);
   //     let headers = new Headers({
@@ -44,10 +48,6 @@ export class ContactoService {
   obtenerMensajes( ){
       return this.http.get(this.contactoURL).map(res=>res.json());
   }
-  //
-  // obtenerDominio( ){
-  //     return this.http.get(this.dominioURL).map(res=>res.json());
-  // }
 
   verMensaje( key$:string ){
       let url = `${this.mensajeURL}/${key$}.json`;

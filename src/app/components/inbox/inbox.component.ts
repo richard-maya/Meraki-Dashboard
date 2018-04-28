@@ -13,13 +13,13 @@ export class InboxComponent implements OnInit {
 
     profile: any;
     mensajes:any[] = [];
-    dominio: any;
-    cantidadMensajes: any;
+    // dominio: any;
+    // cantidadMensajes: any;
     public sortBy = "email";
     public sortOrder = "desc";
 
   constructor(public http:Http,
-              private auth:AuthService,
+              public auth:AuthService,
               public _cS:ContactoService) {
                   this._cS.obtenerMensajes().subscribe(data=>{
                 this.mensajes = data;
@@ -29,8 +29,6 @@ export class InboxComponent implements OnInit {
               m.key$ = key$;
           }
       });
-
-      // console.log(this.mensajes);
       //
       // this._contactoService.obtenerDominio().subscribe(data=>{
       //     this.dominio = data;
