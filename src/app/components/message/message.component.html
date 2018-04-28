@@ -1,0 +1,52 @@
+<!-- MESSAGE
+================================================== -->
+<section id="message" (window:resize)="onResize()">
+    <div class="container">
+        <div class="row justify-content-around d-flex align-items-end my-3">
+            <div class="col">
+                <h3><small>Mensaje de</small> {{ mensaje.nombre }}</h3>
+            </div>
+            <div class="col">
+                <p class="text-right lead font-weight-light">{{ mensaje.fecha | date }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <p class="font-weight-light">Correo: <a href="mailto:{{ mensaje.correo }}">{{ mensaje.correo }}</a></p>
+            </div>
+            <div class="col">
+                <p class="font-weight-light">Teléfono: <a href="tel:{{ mensaje.telefono }}">{{ mensaje.telefono }}</a></p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <p>{{ mensaje.mensaje }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-around">
+            <div class="col text-left">
+                <a [routerLink]="['/Inbox']">
+                    <button type="button" role="button" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;<span *ngIf="toggleText">Regresar</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col text-right">
+                <a href="mailto:{{ mensaje.correo }}?subject=Respuesta%20Formulario%20Contacto">
+                    <button type="button" role="button" class="btn btn-outline-info btn-sm">
+                        <span *ngIf="toggleText">Responder</span> <i class="fas fa-reply"></i>
+                    </button>
+                </a>
+                &nbsp;
+                <a href="tel:{{ mensaje.telefono }}">
+                    <button type="button" role="button" class="btn btn-outline-info btn-sm">
+                        <span *ngIf="toggleText">Llamar</span> <i class="fas fa-phone"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,64 @@
+<!-- INBOX
+================================================== -->
+<section id="inbox">
+    <div class="container">
+        <div class="row justify-content-around my-3">
+            <div class="col">
+                <h1>Inbox</h1>
+            </div>
+        </div>
+
+        <!-- Datatable -->
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive-sm">
+                    <table datatable class="row-border table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Mensaje</th>
+                                <th>Opciones</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- [ngClass]="{noVisto:!mensajes[mensaje].visto, visto:mensajes[mensaje].visto}" -->
+                            <tr *ngFor="let mensaje of mensajes | keys">
+                                <td>{{ mensajes[mensaje].fecha | date }}</td>
+                                <td>
+                                    <a [routerLink]="['/Message',mensajes[mensaje].key$]">
+                                        {{ mensajes[mensaje].nombre }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/Message',mensajes[mensaje].key$]">
+                                        {{ mensajes[mensaje].mensaje | mostrarMensaje }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:{{ mensajes[mensaje].correo }}">
+                                        <button type="button" role="button" class="btn btn-info btn-square btn-sm">
+                                            <i class="fas fa-reply"></i>
+                                        </button>
+                                    </a>
+                                    &nbsp;
+                                    <a href="tel:{{ mensajes[mensaje].telefono }}">
+                                        <button type="button" role="button" class="btn btn-info btn-square btn-sm">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                    </a>
+                                    &nbsp;
+                                    <button type="button" role="button" (click)="borrarMensaje(mensajes[mensaje].key$)" class="btn btn-info btn-square btn-sm">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>{{ mensajes[mensaje].visto }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
