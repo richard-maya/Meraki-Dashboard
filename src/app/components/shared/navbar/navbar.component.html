@@ -14,10 +14,10 @@
     </ul>
     <span class="navbar-text">
         <button type="button" class="btn btn-outline-success btn-sm" (click)="login()"  *ngIf="!auth.isAuthenticated()">
-            Log In
+            Log In <i class="fas fa-sign-in-alt"></i>
         </button>
         <button type="button" class="btn btn-outline-danger btn-sm" (click)="logout()" *ngIf="auth.isAuthenticated()">
-            Log Out
+            Log Out <i class="fas fa-sign-out-alt"></i>
         </button>
     </span>
   </div>

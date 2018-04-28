@@ -18,15 +18,15 @@ export class MessageComponent implements OnInit {
     public toggleText:boolean;
 
   constructor( private auth:AuthService,
-               private _contactoService:ContactoService,
+               private _cS:ContactoService,
                private router:Router,
                private route:ActivatedRoute) {
 
     route.params.subscribe( parametros=>{
-           _contactoService.verMensaje(parametros['id']).subscribe(data=>{
+           _cS.verMensaje(parametros['id']).subscribe(data=>{
                 this.mensaje = data;
                 if(!this.mensaje.visto){
-                    _contactoService.mensajeVisto(parametros['id']).subscribe(data=>this.mensaje.visto = true);
+                    _cS.mensajeVisto(parametros['id']).subscribe(data=>this.mensaje.visto = true);
                 }
            });
        });

@@ -15,11 +15,13 @@ export class InboxComponent implements OnInit {
     mensajes:any[] = [];
     dominio: any;
     cantidadMensajes: any;
+    public sortBy = "email";
+    public sortOrder = "desc";
 
   constructor(public http:Http,
               private auth:AuthService,
-              private _contactoService:ContactoService) {
-                  this._contactoService.obtenerMensajes().subscribe(data=>{
+              public _cS:ContactoService) {
+                  this._cS.obtenerMensajes().subscribe(data=>{
                 this.mensajes = data;
 
           for( let key$ in data){
@@ -27,6 +29,8 @@ export class InboxComponent implements OnInit {
               m.key$ = key$;
           }
       });
+
+      // console.log(this.mensajes);
       //
       // this._contactoService.obtenerDominio().subscribe(data=>{
       //     this.dominio = data;
@@ -46,7 +50,7 @@ export class InboxComponent implements OnInit {
   }
 
   borrarMensaje( key$:string ){
-      this._contactoService.borrarMensaje(key$).subscribe(respuesta=>{
+      this._cS.borrarMensaje(key$).subscribe(respuesta=>{
           if(respuesta){
               console.error(respuesta);
           }else{

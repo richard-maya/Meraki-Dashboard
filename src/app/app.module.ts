@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// Plug Ins
+import { DataTableModule } from "angular2-datatable";
+
 // Routes
 import { APP_ROUTING } from './app.routes';
 
@@ -40,6 +43,7 @@ import { MessageComponent } from './components/message/message.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    DataTableModule,
     APP_ROUTING
   ],
   providers: [

@@ -19,12 +19,10 @@
                                 <th>Nombre</th>
                                 <th>Mensaje</th>
                                 <th>Opciones</th>
-                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- [ngClass]="{noVisto:!mensajes[mensaje].visto, visto:mensajes[mensaje].visto}" -->
-                            <tr *ngFor="let mensaje of mensajes | keys">
+                            <tr *ngFor="let mensaje of mensajes | keys" [ngClass]="{noVisto:!mensajes[mensaje].visto, visto:mensajes[mensaje].visto}">
                                 <td>{{ mensajes[mensaje].fecha | date }}</td>
                                 <td>
                                     <a [routerLink]="['/Message',mensajes[mensaje].key$]">
@@ -53,7 +51,6 @@
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
-                                <td>{{ mensajes[mensaje].visto }}</td>
                             </tr>
                         </tbody>
                     </table>
