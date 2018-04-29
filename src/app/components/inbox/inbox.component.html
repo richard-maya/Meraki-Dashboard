@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col">
                 <div class="table-responsive-sm">
-                    <table datatable class="row-border table table-sm">
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border table table-sm">
                         <thead>
                             <tr>
                                 <th>Fecha</th>
@@ -23,15 +23,15 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let mensaje of mensajes | keys" [ngClass]="{noVisto:!mensajes[mensaje].visto, visto:mensajes[mensaje].visto}">
-                                <td>{{ mensajes[mensaje].fecha | date }}</td>
+                                <td>{{ mensajes[mensaje].fecha | date:'yy/MM/dd'}}</td>
                                 <td>
                                     <a [routerLink]="['/Message',mensajes[mensaje].key$]">
-                                        {{ mensajes[mensaje].nombre }}
+                                        {{ mensajes[mensaje].nombre}}
                                     </a>
                                 </td>
                                 <td>
                                     <a [routerLink]="['/Message',mensajes[mensaje].key$]">
-                                        {{ mensajes[mensaje].mensaje | mostrarMensaje }}
+                                        {{ mensajes[mensaje].mensaje | mostrarMensaje}}
                                     </a>
                                 </td>
                                 <td>

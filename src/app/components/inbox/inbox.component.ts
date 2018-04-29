@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-// import { Router, ActivatedRoute } from "@angular/router";
+import { Http, Headers, Response } from '@angular/http';
 import { AuthService } from '../../services/auth.service';
 import { ContactoService } from '../../services/contacto.service';
+import { Subject } from 'rxjs/Subject';
+
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-inbox',
@@ -13,26 +15,21 @@ export class InboxComponent implements OnInit {
 
     profile: any;
     mensajes:any[] = [];
-    // dominio: any;
-    // cantidadMensajes: any;
-    public sortBy = "email";
-    public sortOrder = "desc";
+    dtTrigger: Subject<any> = new Subject();
+    dtOptions: DataTables.Settings = {};
 
   constructor(public http:Http,
               public auth:AuthService,
               public _cS:ContactoService) {
                   this._cS.obtenerMensajes().subscribe(data=>{
                 this.mensajes = data;
+                this.dtTrigger.next();
 
           for( let key$ in data){
               let m = data[key$];
               m.key$ = key$;
           }
       });
-      //
-      // this._contactoService.obtenerDominio().subscribe(data=>{
-      //     this.dominio = data;
-      // })
     }
 
   ngOnInit() {
@@ -45,6 +42,10 @@ export class InboxComponent implements OnInit {
               // console.log(this.profile);
           });
       }
+
+      this.dtOptions = {
+          order: [[0,"desc"]]
+        };
   }
 
   borrarMensaje( key$:string ){
