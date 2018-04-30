@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // Plug Ins
-import { DataTableModule } from "angular2-datatable";
+import { DataTablesModule } from 'angular-datatables';
 
 // Routes
 import { APP_ROUTING } from './app.routes';
@@ -21,8 +21,6 @@ import { ContactoService } from './services/contacto.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { PricingComponent } from './components/pricing/pricing.component';
-import { PrivateComponent } from './components/private/private.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { MessageComponent } from './components/message/message.component';
 
@@ -32,8 +30,6 @@ import { MessageComponent } from './components/message/message.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PricingComponent,
-    PrivateComponent,
     InboxComponent,
     KeysPipe,
     MostrarMensajePipe,
@@ -43,7 +39,7 @@ import { MessageComponent } from './components/message/message.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DataTableModule,
+    DataTablesModule,
     APP_ROUTING
   ],
   providers: [
