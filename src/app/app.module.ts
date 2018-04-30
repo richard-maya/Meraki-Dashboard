@@ -21,8 +21,6 @@ import { ContactoService } from './services/contacto.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { PricingComponent } from './components/pricing/pricing.component';
-import { PrivateComponent } from './components/private/private.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { MessageComponent } from './components/message/message.component';
 
@@ -32,8 +30,6 @@ import { MessageComponent } from './components/message/message.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PricingComponent,
-    PrivateComponent,
     InboxComponent,
     KeysPipe,
     MostrarMensajePipe,
