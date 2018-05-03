@@ -12,8 +12,8 @@ import { Mensaje } from '../../interfaces/mensaje.interface';
 })
 export class MessageComponent implements OnInit {
 
-    profile: any;
-    private mensaje:Mensaje;
+    public profile: any;
+    public mensaje:Mensaje;
     public ancho:number = window.innerWidth;
     public toggleText:boolean;
 
