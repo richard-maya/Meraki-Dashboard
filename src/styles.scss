@@ -1,8 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 @import "././node_modules/bootstrap/scss/bootstrap.scss";
+
+$meraki-blue: #272D38;
+$meraki-yellow: #FAAF41;
+
+
 .visto{
     background: #ddd !important;
 }
 .noVisto{
     background: #fafafa !important;
+}
+.dash-block{
+    border: 1px solid $meraki-blue;
+    padding: 1rem;
+}
+.main-block{
+    background-color: $meraki-blue;
+    color: $meraki-yellow;
+}
+.main-block, .dash-block{
+    margin-bottom: 1rem;
+}
+
+nav.navbar{color: white;}
+
+section{padding-top: 3rem;}
+
+section#intro{
+    height: 100vh;
+    width: 100%;
+    background-image: url("assets/img/meraki-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
 }

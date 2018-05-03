@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { AuthService } from '../../services/auth.service';
+import { ContactoService } from '../../services/contacto.service';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { ;
-  }
+    profile: any;
 
-  ngOnInit() {
-  }
+    constructor(public http:Http,
+                public auth:AuthService,
+                public _cS:ContactoService) {
+      }
+
+      ngOnInit() {
+          if (this.auth.userProfile) {
+              this.profile = this.auth.userProfile;
+              // console.log(this.profile);
+          } else {
+              this.auth.getProfile((err, profile) => {
+                  this.profile = profile;
+                  // console.log(this.profile);
+              });
+          }
+      }
 
 }

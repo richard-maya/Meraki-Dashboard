@@ -1,20 +1,19 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-// import { PricingComponent } from './components/pricing/pricing.component';
-// import { PrivateComponent } from './components/private/private.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { MessageComponent } from './components/message/message.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { IntroComponent } from './components/intro/intro.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
-  { path: 'Home', component: HomeComponent },
-  { path: '', component: HomeComponent },
-  // { path: 'Pricing', component: PricingComponent },
-  // {
-  //     path: 'Private',
-  //     component: PrivateComponent,
-  //     canActivate: [ AuthGuardService ]
-  // },
+  { path: '', component: IntroComponent },
+  { path: 'Intro', component: IntroComponent },
+  {
+      path: 'Home',
+      component: HomeComponent,
+      canActivate: [ AuthGuardService ]
+  },
   {
       path: 'Inbox',
       component: InboxComponent,
@@ -25,7 +24,12 @@ const APP_ROUTES: Routes = [
       component: MessageComponent,
       canActivate: [ AuthGuardService ]
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'Home' }
+  {
+      path: 'Analytics',
+      component: AnalyticsComponent,
+      canActivate: [ AuthGuardService ]
+  },
+  { path: '**', pathMatch: 'full', redirectTo: 'Intro' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

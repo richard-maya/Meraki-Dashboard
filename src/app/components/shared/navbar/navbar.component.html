@@ -1,26 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="['Home']">
-      <img src="assets/img/meraki-navbar.png" width="40" height="40" class="d-inline-block align-middle mr-3" alt="meraki-creative-studio-logo">Dashboard
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" [routerLink]="['']">
+      <img src="assets/img/meraki-navbar.png" width="40" height="40" class="d-inline-block align-middle mr-3" alt="meraki-creative-studio-logo">Dashboard <small>Beta</small>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['Home']">Home</a>
       </li>
       <li class="nav-item" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['Inbox']">Inbox</a>
       </li>
+      <!-- <li class="nav-item" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['Analytics']">Analytics</a>
+      </li> -->
     </ul>
+
     <span class="navbar-text">
         <button type="button" class="btn btn-outline-success btn-sm" (click)="login()"  *ngIf="!auth.isAuthenticated()">
-            Log In <i class="fas fa-sign-in-alt"></i>
+            Iniciar Sesión <i class="fas fa-sign-in-alt"></i>
         </button>
-        <button type="button" class="btn btn-outline-danger btn-sm" (click)="logout()" *ngIf="auth.isAuthenticated()">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown" *ngIf="auth.isAuthenticated()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ¡Bienvenido {{this.profile.nickname}}!
+                </a>
+                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="logout()" *ngIf="auth.isAuthenticated()">
+                        Cerrar Sesión <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </li>
+        </ul>
+        <!-- <button type="button" class="btn btn-outline-danger btn-sm" (click)="logout()" *ngIf="auth.isAuthenticated()">
             Log Out <i class="fas fa-sign-out-alt"></i>
-        </button>
+        </button> -->
     </span>
   </div>
 </nav>

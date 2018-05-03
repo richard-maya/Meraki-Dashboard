@@ -23,6 +23,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { MessageComponent } from './components/message/message.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { IntroComponent } from './components/intro/intro.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { MessageComponent } from './components/message/message.component';
     InboxComponent,
     KeysPipe,
     MostrarMensajePipe,
-    MessageComponent
+    MessageComponent,
+    AnalyticsComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+<!-- INTRO
+================================================== -->
+<section id="intro" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center" *ngIf="!auth.isAuthenticated()">
+            <div class="text-center">
+                <h1 class="display-4 mb-3">Iniciar Sesión</h1>
+                <button type="button" class="btn btn-outline-light" (click)="login()">
+                    Iniciar Sesión <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" *ngIf="auth.isAuthenticated()">
+            <div class="text-center">
+                <h1 class="display-4 mb-3">¿Ahora qué hacemos?</h1>
+                <div class="row justify-content-center">
+                    <a class="nav-link" [routerLink]="['Home']">
+                        <button type="button" class="btn btn-outline-light">
+                            Ver Reportes &nbsp; <i class="fas fa-chart-line"></i>
+                        </button>
+                    </a>
+                    <a class="nav-link" [routerLink]="['Inbox']">
+                        <button type="button" class="btn btn-outline-light">
+                            Ver Mensajes &nbsp; <i class="fas fa-envelope"></i>
+                        </button>
+                    </a>
+                    <!-- <button type="button" class="btn btn-outline-light" (click)="logout()">
+                        Cerrar Sesión <i class="fas fa-sign-in-alt"></i>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
